@@ -1,0 +1,73 @@
+/* clear margin and padding  */
+* {
+ margin: 0;
+ padding: 0;
+ box-sizing: border-box;
+}
+
+
+/* clear li style  */
+li {
+ list-style: none;
+}
+
+img {
+ vertical-align: middle;
+}
+
+input {
+ outline: none;
+}
+
+/* cursor's style of button */
+button {
+ cursor: pointer;
+ appearance: none;
+ border: none;
+}
+
+a {
+ text-decoration: none;
+ cursor: pointer;
+}
+
+
+body {
+ width: 80%;
+ margin: auto;
+ font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+ background-color: rgb(253, 253, 253);
+}
+
+.safe {
+ background-color: green;
+ color: white;
+}
+
+.medium {
+ background-color: yellow;
+ color: black;
+}
+
+.danger {
+ background-color: red;
+ color: white;
+}
+
+.getout {
+ background-color: purple;
+ color:white;
+}
+
+#uv {
+ display: flex;
+ width: fit-content;
+ padding: 0.5vw;
+}
+
+.search {
+ padding: 2vw;
+ margin: 3vw;
+ border: 1px solid black;
+ border-radius: 2px;
+}

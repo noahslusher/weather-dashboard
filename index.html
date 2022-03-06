@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+  <link rel="stylesheet" href="./assets/css/styles.css" />
+  <title>Weather Dashboard</title>
+</head>
+<body>
+ <!-- Weather Dashboard Header -->
+ <header>
+  <div class="text-center" id="header">
+   <h1>Weather Dashboard</h1>
+  </div>
+ </header>
+
+ <!-- Start Main Section -->
+ <main class="row">
+  <!-- Search Bar -->
+  <div class="col-12 col-md-4 border border-dark p-2">
+   <div class="border-bottom border-danger pt-1 mb-2 justify-space-between" id="">
+    <h2>Search For a City:</h2>
+    <form id="input-form">
+     <div class="form-group">
+      <input id="input" class="form-control" name="city" type="text" placeholder="City Name" autofocus="true"></input>
+     </div>
+     <div class="form-group">
+      <button class="btn btn-dark btn-block" type="submit" >Search</button>
+     </div>
+    </form>
+   </div>
+
+   <!-- Recent searches area -->
+  <div class="border border-primary pt-1 mt-3" id="recent-search">Recent
+
+  </div>
+ </div>
+
+  <!-- Current Weather Report -->
+  <div id="weather-box" class="col-12 col-md-8 border border-dark p-2">
+   <div class="border border-danger" id="current-weather">
+    <h2 id="city-name"></h2>
+    <p id="temp"></p>
+    <p id="wind"></p>
+    <p id="humidity"></p>
+    <div>
+    <p id="uv"></p>
+   </div>
+   </div>
+
+   <!-- 5-Day Forecast -->
+   <div class="border border-danger" id="forecast">
+    <h2>Forecast</h2>
+    <div id="card-wrap" class="row justify-content-center">
+     
+     <!-- <div class="card m-2">
+      <div class="card-body">
+       <h3 class="card-title">Date</h3>
+       <div id="icon"></div>
+       <p class="card-text" id="temp-c">Temp:</p>
+       <p class="card-text" id="wind-c">Wind:</p>
+       <p class="card-text" id="humidity-c">Humidity:</p>
+      </div>
+     </div>
+
+     <div class="card m-2">
+      <div class="card-body">
+       <h3 class="card-title">Date</h3>
+       <div id="icon"></div>
+       <p class="card-text" id="temp-c">Temp:</p>
+       <p class="card-text" id="wind-c">Wind:</p>
+       <p class="card-text" id="humidity-c">Humidity:</p>
+      </div>
+     </div>
+
+     <div class="card m-2">
+      <div class="card-body">
+       <h3 class="card-title">Date</h3>
+       <div id="icon"></div>
+       <p class="card-text" id="temp-c">Temp:</p>
+       <p class="card-text" id="wind-c">Wind:</p>
+       <p class="card-text" id="humidity-c">Humidity:</p>
+      </div>
+     </div>
+
+     <div class="card m-2">
+      <div class="card-body">
+       <h3 class="card-title">Date</h3>
+       <div id="icon"></div>
+       <p class="card-text" id="temp-c">Temp:</p>
+       <p class="card-text" id="wind-c">Wind:</p>
+       <p class="card-text" id="humidity-c">Humidity:</p>
+      </div>
+     </div>
+
+     <div class="card m-2">
+      <div class="card-body">
+       <h3 class="card-title">Date</h3>
+       <div id="icon"></div>
+       <p class="card-text" id="temp-c">Temp:</p>
+       <p class="card-text" id="wind-c">Wind:</p>
+       <p class="card-text" id="humidity-c">Humidity:</p>
+      </div>
+     </div> -->
+
+     
+    </div>
+   </div>
+  </div>
+ </main>
+
+ <!-- jQuery -->
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+ <!-- jQuery UI -->
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+ <script src="./assets/js/script.js"></script>
+</body>
+</html>
