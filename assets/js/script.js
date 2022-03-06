@@ -26,27 +26,41 @@ function formSubmitHandler(event) {
  // Pull from Local Storage
  var searchHistory = JSON.parse(localStorage.getItem("city"))
 // Create buttons for each search
- var recentSearch = document.createElement('button')
+ var recentSearch = document.createElement('a')
  recentSearch.setAttribute("class", "btn btn-dark btn-block")
- recentSearch.setAttribute("type", "submit")
- recentSearch.setAttribute("value", cityName)
+ recentSearch.setAttribute("href", "./index.html?city=" + cityName)
  recentSearch.textContent = searchHistory
  recentSearchBox.appendChild(recentSearch)
-
- console.log(recentSearch.value)
-
- recentSearch.addEventListener("submit", getCityName)
+ event.preventDefault();
 }
 
+function getSearchCity () {
+ var queryString = document.location.search
+ var historySearch = queryString.split("=")[1]
+ if (historySearch) {
+  currentCity.textContent = historySearch
+ getCityName(historySearch)
+ }
+ else {
+  document.location.replace("./index.html")
+ }
+}
+ 
+ 
+
+
 userFormEl.addEventListener("submit", formSubmitHandler)
+// recentSearchBox.addEventListener("submit", formSubmitHandler)
+// function searchHistoryHandler (event){
+
+// }
+ 
 
 
 // function to input city name into geocode api
 function getCityName(city) {
  const clearWrapper = document.getElementById('card-wrap')
  clearWrapper.remove()
-
-
  var geocodeApi = "http://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limit=1&appid=90fb50fac270c54c352e49a47c6e77fa"
 
  // make url request
@@ -55,6 +69,7 @@ function getCityName(city) {
   .then(response => {
    var lat = response[0].lat;
    var lon = response[0].lon;
+   // input lat and lon into weather API
    var weatherApi = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=imperial&appid=90fb50fac270c54c352e49a47c6e77fa`
    return fetch(weatherApi)
   })
@@ -73,7 +88,7 @@ function getCityName(city) {
     const div = document.createElement('div')
     div.setAttribute('class', 'card m-3 border border-dark')
     wrapper.appendChild(div)
-
+    // Creating card elements based off 5 day forecast
     const div2 = document.createElement('div')
     div2.setAttribute('class', 'card-body p-3')
     div.appendChild(div2)
@@ -112,18 +127,17 @@ function getCityName(city) {
    }
 
 
-
+   // Add weather information to current forecast box
    var currentTemp = document.getElementById('temp')
    var currentWind = document.getElementById('wind')
    var currentHumidity = document.getElementById('humidity')
    var currentUV = document.getElementById('uv')
-   //!currentUV.setAttribute("class", "p-1 border border-dark")
-
+   // Set text content equal to information from weather api
    currentTemp.textContent = "Temp: " + daily[0].temp.day + "°F"
    currentWind.textContent = "Wind: " + daily[0].wind_speed + "mph"
    currentHumidity.textContent = "Humidity: " + daily[0].humidity + "%"
    currentUV.textContent = "UV-Index: " + daily[0].uvi
-
+   // Create colors based on UV Index
    if (daily[0].uvi >= 0 && daily[0].uvi < 3) {
     currentUV.setAttribute("class", "safe")
    }
@@ -140,11 +154,10 @@ function getCityName(city) {
 }
 
 
-
+getSearchCity()
 
 
 // Store input history in local storage and createElements to populate the history area
-var citySearch = formInputEl.value.trim()
 
 
 // Populate the current weather box with the correct city and variables
