@@ -22,8 +22,8 @@
  <main class="row">
   <!-- Search Bar -->
   <div class="col-12 col-md-4 border border-dark p-2">
-   <div class="border-bottom border-danger pt-1 mb-2 justify-space-between" id="">
-    <h2>Search For a City:</h2>
+   <div class="border-bottom pt-1 mb-2 justify-space-between" id="">
+    <h2 id="search-box">Search For a City:</h2>
     <form id="input-form">
      <div class="form-group">
       <input id="input" class="form-control" name="city" type="text" placeholder="City Name" autofocus="true"></input>
@@ -36,16 +36,17 @@
 
    <!-- Recent searches area -->
    <form>
-    <div class="border border-primary pt-1 mt-3" id="recent-search">Recent
-
+    <div class="pt-1 mt-3" id="recent-search">
+     <h5>Recent Searches:</h5>
     </div>
    </form>
  </div>
 
   <!-- Current Weather Report -->
   <div id="weather-box" class="col-12 col-md-8 border border-dark p-2">
-   <div class="border border-danger" id="current-weather">
+   <div class="border-bottom" id="current-weather">
     <h2 id="city-name"></h2>
+    <h3 id="current-date"></h3>
     <p id="temp"></p>
     <p id="wind"></p>
     <p id="humidity"></p>
@@ -55,8 +56,8 @@
    </div>
 
    <!-- 5-Day Forecast -->
-   <div class="border border-danger" id="forecast">
-    <h2>Forecast</h2>
+   <div class="" id="forecast">
+    <h2 id="forecast-title">5-Day Forecast:</h2>
     <div id="card-wrap" class="row justify-content-center">
      
      <!-- <div class="card m-2">

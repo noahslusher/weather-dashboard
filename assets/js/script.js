@@ -1,13 +1,16 @@
 var formInputEl = document.getElementById('input')
 var userFormEl = document.getElementById('input-form')
 var currentCity = document.getElementById('city-name')
+var currentDate = document.getElementById('current-date')
 var recentSearchBox = document.getElementById('recent-search')
 
+$('#weather-box').hide()
 // Use input value to populate geocodeAPI
 function formSubmitHandler(event) {
  event.preventDefault();
  var cityName = formInputEl.value.trim();
 
+ 
  // Make sure there is input in the search bar
  if (cityName) {
   getCityName(cityName);
@@ -24,27 +27,51 @@ function formSubmitHandler(event) {
  //Commit search term to localstorage
  localStorage.setItem("city", JSON.stringify(cityName))
  // Pull from Local Storage
+ //var searchHistory = JSON.parse(localStorage.getItem("city"))
+// Create buttons for each search
+ // var recentSearch = document.createElement('a')
+ // recentSearch.setAttribute("class", "btn btn-dark btn-block")
+ // recentSearch.setAttribute("href", "./index.html?city=" + cityName)
+ // recentSearch.textContent = cityName
+ // recentSearchBox.appendChild(recentSearch)
+ // getCityName(cityName)
+ //event.preventDefault();
+ if (cityName) {
+ getSearchCity()
+ }
+ else {
+ }
+ $('#weather-box').show()
+}
+
+
+
+function getSearchCity () {
+ //var queryString = document.location.search
+ //var historySearch = queryString.split("=")[1]
+ // Pull from Local Storage
  var searchHistory = JSON.parse(localStorage.getItem("city"))
+
+ // if (searchHistory) {
+ //  currentCity.textContent = searchHistory
+ // getCityName(searchHistory)
+ // }
+ // else {
+ // }
+
 // Create buttons for each search
  var recentSearch = document.createElement('a')
  recentSearch.setAttribute("class", "btn btn-dark btn-block")
- recentSearch.setAttribute("href", "./index.html?city=" + cityName)
+ //recentSearch.setAttribute("href", "./index.html?city=" + searchHistory)
  recentSearch.textContent = searchHistory
  recentSearchBox.appendChild(recentSearch)
- event.preventDefault();
+
+ recentSearch.addEventListener("click", function(event) {
+  getCityName(event.target.textContent)
+  currentCity.textContent = event.target.textContent
+ })
 }
 
-function getSearchCity () {
- var queryString = document.location.search
- var historySearch = queryString.split("=")[1]
- if (historySearch) {
-  currentCity.textContent = historySearch
- getCityName(historySearch)
- }
- else {
-  document.location.replace("./index.html")
- }
-}
  
  
 
@@ -84,13 +111,15 @@ function getCityName(city) {
 
    // for loop to run through 5 day forecast
    for (var i = 1; i <= 5; i++) {
+
+    currentDate.textContent = $.datepicker.formatDate("mm/dd/yy", new Date(parseInt(daily[0].dt.toString() + '000', 10)))
     console.log(daily[i])
     const div = document.createElement('div')
     div.setAttribute('class', 'card m-3 border border-dark')
     wrapper.appendChild(div)
     // Creating card elements based off 5 day forecast
     const div2 = document.createElement('div')
-    div2.setAttribute('class', 'card-body p-3')
+    div2.setAttribute('class', 'card-body p-3 text-black')
     div.appendChild(div2)
 
     const h5 = document.createElement('h5')
