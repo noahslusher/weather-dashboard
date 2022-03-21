@@ -53,7 +53,7 @@ function getSearchCity () {
   getCityName(event.target.textContent)
   // Populate currentCity with button city name
   currentCity.textContent = event.target.textContent
-  $('#weather-box').show
+  $('#weather-box').show()
  })
 }
 
