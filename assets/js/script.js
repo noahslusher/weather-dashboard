@@ -67,7 +67,7 @@ function getCityName(city) {
  const clearWrapper = document.getElementById('card-wrap')
  clearWrapper.remove()
  // API to get lat and lon from city name
- var geocodeApi = "http://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limit=1&appid=90fb50fac270c54c352e49a47c6e77fa"
+ var geocodeApi = "https://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limit=1&appid=90fb50fac270c54c352e49a47c6e77fa"
  // make url request
  fetch(geocodeApi)
   .then(response => response.json())
